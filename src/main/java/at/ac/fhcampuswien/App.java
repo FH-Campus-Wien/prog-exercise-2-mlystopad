@@ -80,10 +80,57 @@ public class App {
 
     //todo Task 4
     public void printRhombus(){
-        Scanner scanner = new Scanner(System.in);
+        Scanner myScanner = new Scanner(System.in);
+        System.out.print("h: ");
+        int inputHeight = myScanner.nextInt();
+        System.out.print("c: ");
+        char inputChar = myScanner.next().charAt(0);
+        if (inputHeight%2 == 0) {
+            System.out.println("Invalid number!");
+        } else if (inputHeight%2 != 0) {
+            int middleRow = (inputHeight / 2) + 1;
+            // first to middleRow (exclusive)
+            for (int i = 1; i < middleRow; i++) {
+                for (int s = middleRow; s > i; s--) {
+                    System.out.print(" ");
+                }
+                for (int l1 = i - 1; l1 > 0; l1--) {
+                    System.out.print((char) (inputChar - l1));
+                }
+                System.out.print(inputChar);
+                for (int l2 = 1; l2 < i; l2++) {
+                    System.out.print((char) (inputChar - l2));
+                }
+                System.out.println();
+            }
+            // middleRow alone
+            for (int l1 = middleRow - 1; l1 > 0; l1--) {
+                System.out.print((char) (inputChar - l1));
+            }
+            System.out.print(inputChar);
+            for (int l2 = 1; l2 < middleRow; l2++) {
+                System.out.print((char) (inputChar - l2));
+            }
+            System.out.println();
 
-        int height = 0;
-        char c;
+
+            // middleRow (exclusive) to end
+            for (int i = middleRow + 1; i <= inputHeight; i++) {
+                for (int s = i; s > middleRow; s--) {
+                    System.out.print(" ");
+                }
+                for (int l1 = i; l1 < inputHeight; l1++) {
+                    System.out.print((char) (inputChar - (inputHeight - l1)));
+                }
+                System.out.print(inputChar);
+                for (int l2 = inputHeight - 1; l2 >= i; l2--) {
+                    System.out.print((char) (inputChar - (inputHeight - l2)));
+                }
+                System.out.println();
+            }
+        } else {
+            return;
+        }
     }
 
     //todo Task 5
